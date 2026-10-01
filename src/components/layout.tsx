@@ -26,9 +26,6 @@ export function Photo({
 export function Shell({ children }: { children: React.ReactNode }) {
   return (
     <div className="min-h-screen bg-paper text-ink">
-      <p className="bg-forest px-4 py-2 text-center text-xs leading-5 text-paper">
-        직원 배포용 안내입니다. 시행·시공사의 공식 홈페이지가 아니며, 문안 기준일은 {SOURCE_DATE}입니다.
-      </p>
       <Header />
       {children}
       <Footer />
