@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Shell, SubHero, pageHead } from "@/components/layout";
-import { PROJECT_PHONE_DISPLAY, SOURCE_DATE } from "@/data/content";
+import { PROJECT_PHONE_DISPLAY } from "@/data/content";
 
 export const Route = createFileRoute("/privacy")({
   head: () => pageHead("개인정보처리방침"),
@@ -19,7 +19,7 @@ function Page() {
           <h2 className="font-serif text-2xl">처리자</h2>
           <p className="mt-3">개인정보 처리자: HUMANE 운영자.</p>
           <p className="mt-3">
-            {SOURCE_DATE} 공식 홈페이지에 적힌 ㈜청라스마트시티, 대우건설, 나인야드, 넥스미디어, 도담에셋, 애드파워는 그 페이지의 주체입니다. 이 등록 폼의 처리자도 아니고, 이 폼의 수탁자도 아닙니다.
+            ㈜청라스마트시티, 대우건설, 나인야드, 넥스미디어, 도담에셋, 애드파워는 이 등록 폼의 처리자도 아니고, 이 폼의 수탁자도 아닙니다.
           </p>
         </section>
         <section>

@@ -73,7 +73,7 @@ export function DepositTable() {
           ))}
         </tbody>
       </table>
-      <p className="mt-3 text-sm text-muted">청라 아크원 푸르지오 적용 타입 기준. 기준일 2026-09-30.</p>
+      <p className="mt-3 text-sm text-muted">청라 아크원 푸르지오 적용 타입 기준.</p>
     </div>
   );
 }

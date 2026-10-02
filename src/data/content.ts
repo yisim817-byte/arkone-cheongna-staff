@@ -1,5 +1,4 @@
 export const SITE_ID = "arkone-cheongna-staff";
-export const SOURCE_DATE = "2026-09-30";
 export const OFFICIAL = "https://arkone-prugio.com";
 export const img = (path: string) => `${OFFICIAL}${encodeURI(path)}`;
 

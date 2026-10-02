@@ -1,7 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
-import { NAV, PROJECT_PHONE_DISPLAY, PROJECT_PHONE_TEL, SOURCE_DATE, img } from "@/data/content";
+import { NAV, PROJECT_PHONE_DISPLAY, PROJECT_PHONE_TEL, img } from "@/data/content";
 
 export function Photo({
   src,
@@ -111,7 +111,7 @@ export function Footer() {
         <div className="space-y-3 text-sm leading-6 text-muted">
           <p>이 사이트의 운영·개인정보 처리자: HUMANE 운영자. 대표번호 {PROJECT_PHONE_DISPLAY}.</p>
           <p>
-            아래는 {SOURCE_DATE} 공식 홈페이지에 적힌 사업 주체이며, 이 사이트를 운영한다는 뜻이 아닙니다. 시행 ㈜청라스마트시티 · 시공 대우건설.
+            아래는 공식 홈페이지에 적힌 사업 주체이며, 이 사이트를 운영한다는 뜻이 아닙니다. 시행 ㈜청라스마트시티 · 시공 대우건설.
           </p>
           <p>CG·이미지·일부 영상은 이해를 돕기 위한 것이며 실제와 다를 수 있습니다. 개발계획은 관계기관 사정으로 변경·취소될 수 있습니다.</p>
           <p>주소의 행정구역은 계약 전 확인이 필요합니다.</p>
@@ -145,9 +145,9 @@ export function SubHero({ en, title, crumbs }: { en: string; title: string; crum
 }
 
 export function SourceNote({ children }: { children?: React.ReactNode }) {
+  if (!children) return null;
   return (
     <aside className="mx-auto max-w-6xl px-4 py-8 text-sm leading-6 text-muted">
-      <p>기준일 {SOURCE_DATE}. 공식 홈페이지 공개 문안이며 변경될 수 있습니다.</p>
       {children}
     </aside>
   );
