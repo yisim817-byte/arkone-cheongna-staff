@@ -12,10 +12,7 @@ function Page() {
     <Shell>
       <SubHero en="INFORMATION" title="특별공급 안내" crumbs="청약안내 / 특별공급 안내" />
       <article className="mx-auto max-w-6xl px-4 py-12">
-        <p className="text-sm leading-6 text-muted">
-          원본 이미지의 「이내」 비율입니다. 합이 100이 아니므로 배분 비율로 읽지 않습니다. 이 단지의 특별공급 세대수는 이미지에 없습니다.
-        </p>
-        <Photo src={img("/resources/img/sub/03_특별공급.v4.jpg")} alt="특별공급 안내" className="mt-8 w-full" />
+        <Photo src={img("/resources/img/sub/03_특별공급.v4.jpg")} alt="특별공급 안내" className="w-full" />
         <h2 className="mt-12 font-serif text-2xl">공급 비율과 적용 타입</h2>
         <div className="mt-4 overflow-x-auto">
           <table className="w-full min-w-[32rem] border-collapse text-sm">
@@ -76,7 +73,7 @@ export function DepositTable() {
           ))}
         </tbody>
       </table>
-      <p className="mt-3 text-sm text-muted">청라 아크원 푸르지오 적용 타입 기준. 2026-09-30 특별공급 안내 이미지.</p>
+      <p className="mt-3 text-sm text-muted">청라 아크원 푸르지오 적용 타입 기준. 기준일 2026-09-30.</p>
     </div>
   );
 }

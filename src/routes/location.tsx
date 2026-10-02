@@ -16,7 +16,7 @@ function Page() {
         <p className="mt-3 text-muted">푸르지오의 품격을 더하다 · CENTRAL LOCATION PRUGIO</p>
         <Photo
           src={img("/resources/img/sub/location_map_img.v4.jpg")}
-          alt="입지 지도. 원본 대체텍스트에는 청라 센트럴 푸르지오가 들어 있습니다."
+          alt="입지 지도"
           className="mt-8 w-full"
         />
         <div className="mt-10 grid gap-6 md:grid-cols-2">
@@ -33,7 +33,7 @@ function Page() {
           ))}
         </ul>
         <p className="mt-6 text-sm leading-6 text-muted">
-          학교 배정은 교육지원청 문의 사항입니다. 도보 시간·신설 학교는 예정·계획입니다. 로봇랜드는 본문 (예정)과 각주 (28년 예정)이 다릅니다.
+          학교 배정은 교육지원청 문의 사항입니다. 도보 시간·신설 학교는 예정·계획입니다.
         </p>
       </article>
       <SourceNote />

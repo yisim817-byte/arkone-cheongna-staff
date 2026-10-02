@@ -40,7 +40,7 @@ function Home() {
             <br />
             푸르지오의 완성
           </h1>
-          <p className="mt-6 text-sm">10월 OPEN 예정 · 연도는 공식 문안에 없음 · 기준 2026-09-30</p>
+          <p className="mt-6 text-sm">10월 OPEN 예정</p>
           <div className="mt-8 flex flex-wrap justify-center gap-3">
             <Link to="/register" className="grid h-12 min-w-36 place-items-center bg-paper px-5 text-sm text-ink">
               관심고객등록
@@ -72,7 +72,7 @@ function Home() {
             <p className="mt-6 leading-7 text-paper/80">7호선 국제업무단지역(예정), GTX-D·E(계획), 청라하늘대교 개통. 일정은 예정·계획이며 변경될 수 있습니다.</p>
             <Link to="/location" className="mt-8 inline-block border border-paper px-5 py-3 text-sm">입지환경</Link>
           </div>
-          <Photo src={img("/resources/img/sub/location_map_img.v4.jpg")} alt="입지 안내 지도. 원본 alt에는 센트럴 푸르지오가 포함되어 있습니다." className="h-[360px] w-full object-cover" />
+          <Photo src={img("/resources/img/sub/location_map_img.v4.jpg")} alt="입지 안내 지도" className="h-[360px] w-full object-cover" />
         </div>
       </section>
 
@@ -94,7 +94,6 @@ function Home() {
         <div className="mx-auto max-w-6xl">
           <p className="text-xs tracking-[0.22em] text-sand">PREMIUM</p>
           <h2 className="mt-3 font-serif text-4xl">ARK-ONE PREMIUM</h2>
-          <p className="mt-4 max-w-xl text-sm leading-6 text-paper/75">공식 메인은 이 구간의 이미지·영상이 AI로 제작되어 실제와 다르다고 고지합니다.</p>
           <Link to="/premium" className="mt-8 inline-block border border-paper px-5 py-3 text-sm">프리미엄</Link>
         </div>
       </section>
@@ -104,7 +103,7 @@ function Home() {
         <div>
           <p className="text-xs tracking-[0.22em] text-muted">BRAND</p>
           <h2 className="mt-3 font-serif text-4xl">THE NATURAL NOBILITY</h2>
-          <p className="mt-6 leading-7 text-muted">견고한 기본에 더해진 편안함. 총 2,911가구(B1 & M5) 브랜드타운이라는 문안이 히스토리 페이지에 있습니다.</p>
+          <p className="mt-6 leading-7 text-muted">견고한 기본에 더해진 편안함.</p>
         </div>
       </section>
 

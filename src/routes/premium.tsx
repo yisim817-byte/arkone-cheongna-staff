@@ -23,7 +23,7 @@ function Page() {
             </div>
           </section>
         ))}
-        <p className="text-sm leading-6 text-muted">상기 이미지는 소비자의 이해를 돕기 위한 것으로 실제와 다를 수 있습니다. 분양가 액수는 게시되어 있지 않습니다.</p>
+        <p className="text-sm leading-6 text-muted">상기 이미지는 소비자의 이해를 돕기 위한 것으로 실제와 다를 수 있습니다.</p>
       </article>
       <SourceNote />
     </Shell>

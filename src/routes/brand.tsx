@@ -15,7 +15,7 @@ function Page() {
         <Photo src={img("/resources/img/sub/brand_content_img.v4.jpg")} alt="청라를 잇는 교량과 도심 야경" className="max-h-[640px] w-full object-cover" />
         <h2 className="mt-10 font-serif text-3xl">총 2,911가구 (B1 & M5 블록)</h2>
         <p className="mt-4 max-w-3xl leading-7 text-muted">
-          청라를 대표하는 푸르지오 대규모 브랜드타운. 국제업무단지 B1 블록에 이어 M5 블록으로 커진다는 문안입니다. 2,911은 이 단지만의 1,855와 다릅니다.
+          청라를 대표하는 푸르지오 대규모 브랜드타운. 국제업무단지 B1 블록에 이어 M5 블록으로 이어집니다.
         </p>
         <ol className="mt-10 grid gap-6 md:grid-cols-2">
           {HISTORY.map(([year, text]) => (
@@ -26,7 +26,7 @@ function Page() {
           ))}
         </ol>
         <p className="mt-8 text-sm leading-6 text-muted">
-          2029 피크원 (예정)은 이 히스토리 문안에만 있고 메인 타임라인 2029 칸에는 없습니다. 하나드림타운은 여기서 (예정), 다른 문안은 준공·9월 입주를 말합니다. 7호선 계획은 당사와 무관하며 변경될 수 있습니다.
+          7호선 계획은 당사와 무관하며 변경될 수 있습니다.
         </p>
       </article>
       <SourceNote />

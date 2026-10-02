@@ -24,7 +24,7 @@ function Page() {
             ))}
           </dl>
           <p className="mt-6 text-sm leading-6 text-muted">
-            메인 화면의 건축면적은 약 12,278㎡, 연면적은 약 424,558㎡로 위 값의 반올림입니다. 세대·가구·실 용어가 문안 안에서 섞여 있습니다. 하자 사항은 공동주택관리법 등 관련 법령을 따릅니다.
+            하자 사항은 공동주택관리법 등 관련 법령을 따릅니다.
           </p>
         </div>
         <Photo src={img("/resources/img/sub/overview_apt_img.v4.jpg")} alt="단지 이미지" className="w-full object-cover" />

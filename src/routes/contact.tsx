@@ -32,7 +32,7 @@ function Page() {
           </a>
         </p>
         <p className="text-sm leading-6 text-muted">
-          현장·견본주택·홍보관은 주소를 확인하고, 경로는 지도에서 다시 확인해야 합니다. 운영시간과 주차 안내는 공식 페이지에 없었습니다.
+          현장·견본주택·홍보관은 주소를 확인하고, 경로는 지도에서 다시 확인해야 합니다.
         </p>
       </article>
       <SourceNote />

@@ -18,7 +18,7 @@ function Page() {
       <SubHero en="NEWS" title="언론보도" crumbs="홍보센터 / 언론보도" />
       <article className="mx-auto max-w-6xl px-4 py-12">
         <p className="text-sm leading-6 text-muted">
-          2026-09-30 목록의 매체·날짜·제목입니다. 기사 본문은 다시 싣지 않습니다. 누르면 언론사 페이지로 갑니다. 기사 속 금액·일정·행정구역은 사업개요 표와 다를 수 있습니다.
+          기사 제목을 누르면 언론사 페이지로 이동합니다. 기사 속 금액·일정은 입주자모집공고와 다를 수 있습니다.
         </p>
         <ul className="mt-8 divide-y divide-line border-y border-line">
           {rows.map((item) => (

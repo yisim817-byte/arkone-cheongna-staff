@@ -109,12 +109,12 @@ export function Footer() {
       <div className="mx-auto grid max-w-6xl gap-8 px-4 py-12 md:grid-cols-[180px_1fr]">
         <Photo src={img("/resources/img/common/logotype.svg")} alt="PRUGIO" className="h-6 w-auto" />
         <div className="space-y-3 text-sm leading-6 text-muted">
-          <p>이 사이트의 운영·개인정보 처리자: HUMANE 운영자. 대표번호 {PROJECT_PHONE_DISPLAY}. 사업자등록번호와 주소는 확인된 자료가 없어 적지 않습니다.</p>
+          <p>이 사이트의 운영·개인정보 처리자: HUMANE 운영자. 대표번호 {PROJECT_PHONE_DISPLAY}.</p>
           <p>
             아래는 {SOURCE_DATE} 공식 홈페이지에 적힌 사업 주체이며, 이 사이트를 운영한다는 뜻이 아닙니다. 시행 ㈜청라스마트시티 · 시공 대우건설.
           </p>
-          <p>CG·이미지·일부 영상은 이해를 돕기 위한 것이며 실제와 다를 수 있습니다. 개발계획은 관계기관 사정으로 변경·취소될 수 있습니다. 공식 홈페이지는 일부 이미지·영상이 AI로 제작되었다고 고지했습니다.</p>
-          <p>행정구역은 공식 문안의 「서해구」 표기를 그대로 옮겼습니다. 실제 구역명과 다를 수 있어 계약 전 확인이 필요합니다.</p>
+          <p>CG·이미지·일부 영상은 이해를 돕기 위한 것이며 실제와 다를 수 있습니다. 개발계획은 관계기관 사정으로 변경·취소될 수 있습니다.</p>
+          <p>주소의 행정구역은 계약 전 확인이 필요합니다.</p>
           <div className="flex flex-wrap gap-4 pt-2 text-ink">
             <Link to="/privacy" className="underline">개인정보처리방침</Link>
             <Link to="/register" className="underline">관심고객등록</Link>
@@ -147,7 +147,7 @@ export function SubHero({ en, title, crumbs }: { en: string; title: string; crum
 export function SourceNote({ children }: { children?: React.ReactNode }) {
   return (
     <aside className="mx-auto max-w-6xl px-4 py-8 text-sm leading-6 text-muted">
-      <p>기준일 {SOURCE_DATE}. 공식 홈페이지 공개 문안이며 변경될 수 있습니다. 분양가·입주 연도는 그 페이지에 숫자로 없습니다.</p>
+      <p>기준일 {SOURCE_DATE}. 공식 홈페이지 공개 문안이며 변경될 수 있습니다.</p>
       {children}
     </aside>
   );
