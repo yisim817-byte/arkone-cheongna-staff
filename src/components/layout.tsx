@@ -1,4 +1,4 @@
-import { Link } from "@tanstack/react-router";
+import { Link, useRouterState } from "@tanstack/react-router";
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
 import { NAV, PROJECT_PHONE_DISPLAY, PROJECT_PHONE_TEL, img } from "@/data/content";
@@ -35,6 +35,7 @@ export function Shell({ children }: { children: React.ReactNode }) {
 
 function Header() {
   const [open, setOpen] = useState(false);
+  const home = useRouterState({ select: (s) => s.location.pathname === "/" });
   return (
     <header className="sticky top-0 z-40 border-b border-line bg-paper/95 backdrop-blur">
       <div className="mx-auto flex max-w-6xl items-center gap-4 px-4 py-3">
@@ -62,7 +63,7 @@ function Header() {
               ) : null}
             </div>
           ))}
-          <a href={PROJECT_PHONE_TEL} className="text-right font-serif text-sm text-forest" title="대표번호">
+          <a href={PROJECT_PHONE_TEL} className={`text-right font-serif text-forest ${home ? "text-[1.75rem] leading-none" : "text-sm"}`} title="대표번호">
             <span className="block text-[10px] font-sans tracking-normal text-muted">대표번호</span>
             {PROJECT_PHONE_DISPLAY}
           </a>
@@ -93,7 +94,7 @@ function Header() {
               ))}
             </div>
           ))}
-          <a href={PROJECT_PHONE_TEL} className="mt-4 block font-serif text-lg text-forest">
+          <a href={PROJECT_PHONE_TEL} className={`mt-4 block font-serif text-forest ${home ? "text-[2.25rem] leading-none" : "text-lg"}`}>
             <span className="block font-sans text-xs text-muted">대표번호</span>
             {PROJECT_PHONE_DISPLAY}
           </a>
