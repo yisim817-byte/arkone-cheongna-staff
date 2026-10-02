@@ -1,5 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Photo, Shell, pageHead } from "@/components/layout";
+import { AptEventPopup } from "@/components/event-popup";
 import { HISTORY, PROJECT_PHONE_DISPLAY, PROJECT_PHONE_TEL, img } from "@/data/content";
 
 export const Route = createFileRoute("/")({
@@ -20,6 +21,7 @@ const SECTIONS = [
 function Home() {
   return (
     <Shell>
+      <AptEventPopup />
       <nav className="fixed right-3 top-1/2 z-30 hidden -translate-y-1/2 flex-col gap-3 xl:flex" aria-label="섹션">
         {SECTIONS.map(([id, label]) => (
           <a key={id} href={`#${id}`} className="text-[10px] tracking-[0.14em] text-muted hover:text-ink">
