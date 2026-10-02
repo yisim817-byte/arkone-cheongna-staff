@@ -38,7 +38,7 @@ function Header() {
   const home = useRouterState({ select: (s) => s.location.pathname === "/" });
   return (
     <header className="sticky top-0 z-40 border-b border-line bg-paper/95 backdrop-blur">
-      <div className="mx-auto flex max-w-6xl items-center gap-4 px-4 py-3">
+      <div className="flex items-center gap-4 px-4 py-3 lg:px-5">
         <Link to="/" className="shrink-0" aria-label="청라 아크원 푸르지오 홈">
           <Photo
             src={img("/resources/img/common/logotype.svg")}
@@ -46,7 +46,7 @@ function Header() {
             className="h-6 w-auto"
           />
         </Link>
-        <nav className="hidden flex-1 items-center justify-end gap-5 lg:flex" aria-label="주요 메뉴">
+        <nav className="hidden min-w-0 flex-1 items-center justify-end gap-5 lg:flex" aria-label="주요 메뉴">
           {NAV.map((item) => (
             <div key={item.en} className="group relative">
               <Link to={item.href} className="text-sm font-medium tracking-wide">
@@ -63,14 +63,20 @@ function Header() {
               ) : null}
             </div>
           ))}
-          <a href={PROJECT_PHONE_TEL} className={`text-right font-serif text-forest ${home ? "text-[1.75rem] leading-none" : "text-sm"}`} title="대표번호">
-            <span className="block text-[10px] font-sans tracking-normal text-muted">대표번호</span>
-            {PROJECT_PHONE_DISPLAY}
-          </a>
         </nav>
+        <a
+          href={PROJECT_PHONE_TEL}
+          className="ml-auto shrink-0 whitespace-nowrap text-right text-forest lg:ml-2"
+          title="문의"
+        >
+          <span className="mr-2 align-middle font-sans text-sm text-muted">문의</span>
+          <span className={`align-middle font-serif ${home ? "text-[1.75rem] leading-none" : "text-base"}`}>
+            {PROJECT_PHONE_DISPLAY}
+          </span>
+        </a>
         <button
           type="button"
-          className="ml-auto grid h-11 w-11 place-items-center border border-line lg:hidden"
+          className="grid h-11 w-11 shrink-0 place-items-center border border-line lg:hidden"
           aria-label={open ? "메뉴 닫기" : "전체 메뉴 열기"}
           onClick={() => setOpen((v) => !v)}
         >
@@ -94,9 +100,9 @@ function Header() {
               ))}
             </div>
           ))}
-          <a href={PROJECT_PHONE_TEL} className={`mt-4 block font-serif text-forest ${home ? "text-[2.25rem] leading-none" : "text-lg"}`}>
-            <span className="block font-sans text-xs text-muted">대표번호</span>
-            {PROJECT_PHONE_DISPLAY}
+          <a href={PROJECT_PHONE_TEL} className={`mt-4 block text-right font-serif text-forest ${home ? "text-[2.25rem] leading-none" : "text-lg"}`}>
+            <span className="mr-2 align-middle font-sans text-sm text-muted">문의</span>
+            <span className="align-middle">{PROJECT_PHONE_DISPLAY}</span>
           </a>
         </div>
       ) : null}
