@@ -1,3 +1,4 @@
+import { RoleExtra } from "@/components/r2";
 import { createFileRoute } from "@tanstack/react-router";
 import { Photo, Shell, SourceNote, SubHero, pageHead, QuickAnswer } from "@/components/layout";
 import { DEPOSIT, SPECIAL_CAPS, img } from "@/data/content";
@@ -46,6 +47,7 @@ function Page() {
         <DepositTable />
       </article>
       <SourceNote />
+      <RoleExtra path="/docspecial" />
     </Shell>
   );
 }
