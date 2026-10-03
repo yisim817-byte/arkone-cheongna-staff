@@ -1,7 +1,4 @@
-import { getSql } from "@/lib/db";
 import { SITE_ID } from "@/data/content";
-
-const DEFAULT_RECIPIENT = "01093860881";
 
 export type AlertInput = {
   receiptNo: string;
@@ -17,16 +14,15 @@ export type AlertResult = {
 
 export function missingKakaoEnv(): string[] {
   const need = ["KAKAO_ALIMTALK_ENDPOINT", "KAKAO_ALIMTALK_AUTHORIZATION", "KAKAO_TEMPLATE_CODE"];
-  return need.filter((key) => !process.env[key]?.trim());
+  const missing = need.filter((key) => !process.env[key]?.trim());
+  if (!staffRecipient()) missing.push("KAKAO_ALERT_RECIPIENT");
+  return missing;
 }
 
-export async function staffRecipient(): Promise<string> {
-  const sql = await getSql();
-  const rows = await sql<{ phone: string }>`
-    select phone from notify_settings where site_id = ${SITE_ID} limit 1
-  `;
-  const phone = rows[0]?.phone?.replace(/\D/g, "");
-  return phone && phone.length >= 10 ? phone : DEFAULT_RECIPIENT;
+// The only recipient is this Vercel project's server env. No DB row, admin form or source default can redirect it.
+export function staffRecipient(): string | null {
+  const phone = process.env.KAKAO_ALERT_RECIPIENT?.replace(/\D/g, "") ?? "";
+  return /^010\d{8}$/.test(phone) ? phone : null;
 }
 
 export async function sendStaffAlert(input: AlertInput): Promise<AlertResult> {
@@ -34,15 +30,10 @@ export async function sendStaffAlert(input: AlertInput): Promise<AlertResult> {
   if (missing.length) {
     return { status: "not_configured", detail: `missing ${missing.join(",")}` };
   }
+  const recipient = staffRecipient()!;
   const endpoint = process.env.KAKAO_ALIMTALK_ENDPOINT!.trim();
   const authorization = process.env.KAKAO_ALIMTALK_AUTHORIZATION!.trim();
   const template = process.env.KAKAO_TEMPLATE_CODE!.trim();
-  let recipient: string;
-  try {
-    recipient = await staffRecipient();
-  } catch {
-    return { status: "failed", detail: "notify exception" };
-  }
   const text = [
     "[청라 아크원 푸르지오 직원배포]",
     `접수번호 ${input.receiptNo}`,
