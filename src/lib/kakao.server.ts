@@ -37,7 +37,12 @@ export async function sendStaffAlert(input: AlertInput): Promise<AlertResult> {
   const endpoint = process.env.KAKAO_ALIMTALK_ENDPOINT!.trim();
   const authorization = process.env.KAKAO_ALIMTALK_AUTHORIZATION!.trim();
   const template = process.env.KAKAO_TEMPLATE_CODE!.trim();
-  const recipient = await staffRecipient();
+  let recipient: string;
+  try {
+    recipient = await staffRecipient();
+  } catch {
+    return { status: "failed", detail: "notify exception" };
+  }
   const text = [
     "[청라 아크원 푸르지오 직원배포]",
     `접수번호 ${input.receiptNo}`,
