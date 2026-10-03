@@ -1,10 +1,10 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { Photo, Shell, SourceNote, SubHero, pageHead } from "@/components/layout";
+import { Photo, Shell, SourceNote, SubHero, pageHead, QuickAnswer } from "@/components/layout";
 import { img } from "@/data/content";
 import { DepositTable } from "./docspecial";
 
 export const Route = createFileRoute("/docnormal")({
-  head: () => pageHead("일반공급 안내"),
+  head: () => pageHead("일반공급 안내", "/docnormal"),
   component: Page,
 });
 
@@ -20,6 +20,7 @@ function Page() {
   return (
     <Shell>
       <SubHero en="INFORMATION" title="일반공급 안내" crumbs="청약안내 / 일반공급 안내" />
+      <QuickAnswer path="/docnormal" />
       <article className="mx-auto max-w-6xl px-4 py-12">
         <p className="text-sm leading-6 text-muted">
           청라 아크원 푸르지오는 인천광역시 서해구 비규제지역(비투기과열지역 및 비청약과열지역) 요건이 적용됩니다.

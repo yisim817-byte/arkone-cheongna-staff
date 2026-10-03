@@ -1,9 +1,9 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { Photo, Shell, SourceNote, SubHero, pageHead } from "@/components/layout";
+import { Photo, Shell, SourceNote, SubHero, pageHead, QuickAnswer } from "@/components/layout";
 import { DEPOSIT, SPECIAL_CAPS, img } from "@/data/content";
 
 export const Route = createFileRoute("/docspecial")({
-  head: () => pageHead("특별공급 안내"),
+  head: () => pageHead("특별공급 안내", "/docspecial"),
   component: Page,
 });
 
@@ -11,6 +11,7 @@ function Page() {
   return (
     <Shell>
       <SubHero en="INFORMATION" title="특별공급 안내" crumbs="청약안내 / 특별공급 안내" />
+      <QuickAnswer path="/docspecial" />
       <article className="mx-auto max-w-6xl px-4 py-12">
         <Photo src={img("/resources/img/sub/03_특별공급.v4.jpg")} alt="특별공급 안내" className="w-full" />
         <h2 className="mt-12 font-serif text-2xl">공급 비율과 적용 타입</h2>
