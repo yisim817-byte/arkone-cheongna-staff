@@ -10,7 +10,7 @@ import type { Role, RoleFigure, StripCell } from "./role-types";
  * false인 동안에는 달력의 날짜 표시와 일정 띠의 일자를 화면에 올리지 않는다.
  * 입주자모집공고가 나오면 아래 띠의 값을 공고문 값으로 바꾼다.
  */
-export const SCHEDULE_CONFIRMED: boolean = false;
+export const SCHEDULE_CONFIRMED: boolean = true;
 
 const FIGURE_CONFIRMED: RoleFigure = {
   kind: "calendar",
