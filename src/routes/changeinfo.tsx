@@ -1,9 +1,9 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { Photo, Shell, SourceNote, SubHero, pageHead } from "@/components/layout";
+import { Photo, Shell, SourceNote, SubHero, pageHead, QuickAnswer } from "@/components/layout";
 import { img } from "@/data/content";
 
 export const Route = createFileRoute("/changeinfo")({
-  head: () => pageHead("변경된 청약제도"),
+  head: () => pageHead("변경된 청약제도", "/changeinfo"),
   component: Page,
 });
 
@@ -28,6 +28,7 @@ function Page() {
   return (
     <Shell>
       <SubHero en="INFORMATION" title="변경된 청약제도" crumbs="청약안내 / 변경된 청약제도" />
+      <QuickAnswer path="/changeinfo" />
       <article className="mx-auto max-w-6xl px-4 py-12">
         <p className="text-sm leading-6 text-muted">
           입주자모집공고와 청약홈이 우선합니다.
