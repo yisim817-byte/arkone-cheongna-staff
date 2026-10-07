@@ -10,17 +10,17 @@ import type { Role, RoleFigure, StripCell } from "./role-types";
  * false인 동안에는 달력의 날짜 표시와 일정 띠의 일자를 화면에 올리지 않는다.
  * 입주자모집공고가 나오면 아래 띠의 값을 공고문 값으로 바꾼다.
  */
-export const SCHEDULE_CONFIRMED: boolean = true;
+export const SCHEDULE_CONFIRMED: boolean = false;
 
 const FIGURE_CONFIRMED: RoleFigure = {
   kind: "calendar",
   year: 2026,
   month: 10,
   marks: [
-    { day: 15, style: "fill", label: "15일(목) 입주자모집공고 예정" },
-    { day: 23, style: "ring", label: "23일(금) GRAND OPEN 예정" },
+    { day: 15, style: "fill", label: "10월 중 OPEN 예정" },
+    { day: 23, style: "ring", label: "일정 문의 1666-4250" },
   ],
-  alt: "2026년 10월 달력. 15일 입주자모집공고 예정, 23일 GRAND OPEN 예정",
+  alt: "2026년 10월. 10월 중 OPEN 예정",
 };
 
 const FIGURE_PENDING: RoleFigure = {
@@ -37,16 +37,14 @@ const STRIP_CONFIRMED: StripCell[] = [
     no: "1",
     label: "입주자모집공고",
     chip: { kind: "soon", text: "예정" },
-    value: "10.15",
-    unit: "목",
+    value: "일정 문의",
     desc: "사업주체 사정에 따라 변경될 수 있습니다.",
   },
   {
     no: "2",
     label: "GRAND OPEN",
     chip: { kind: "soon", text: "예정" },
-    value: "10.23",
-    unit: "금",
+    value: "10월 중",
     desc: "견본주택 청라동 87-1번지",
   },
   {
@@ -69,13 +67,13 @@ const STRIP_PENDING: StripCell[] = [
   {
     label: "입주자모집공고",
     chip: { kind: "soon", text: "예정" },
-    value: "공고 전",
+    value: "일정 문의",
     desc: "일정은 사업주체 사정에 따라 변경될 수 있습니다.",
   },
   {
     label: "GRAND OPEN",
     chip: { kind: "soon", text: "예정" },
-    value: "10월",
+    value: "10월 중",
     desc: "견본주택 청라동 87-1번지",
   },
   {
