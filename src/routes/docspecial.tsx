@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Nb } from "@/components/chrome";
-import { Photo, Shell, SourceNote, SubHero, pageHead, QuickAnswer } from "@/components/layout";
+import { Photo, Shell, SourceNote, SubHero, pageHead, PageFaq, QuickAnswer } from "@/components/layout";
 import { DepositTable, SourceLine } from "@/components/role";
 import { SPECIAL_CAPS, img } from "@/data/content";
 
@@ -23,6 +23,7 @@ function Page() {
     <Shell>
       <SubHero en="INFORMATION" title="특별공급 안내" crumbs="청약안내 / 특별공급 안내" />
       <QuickAnswer path="/docspecial" />
+      <PageFaq path="/docspecial" />
       <article className="ak-wrap ak-page">
         <div className="ak-cols">
           <h2 className="ak-h2">공급 비율과 적용 타입</h2>

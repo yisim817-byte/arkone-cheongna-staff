@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Nb } from "@/components/chrome";
-import { Photo, Shell, SourceNote, SubHero, pageHead, QuickAnswer } from "@/components/layout";
+import { Photo, Shell, SourceNote, SubHero, pageHead, PageFaq, QuickAnswer } from "@/components/layout";
 import { img } from "@/data/content";
 
 export const Route = createFileRoute("/changeinfo")({
@@ -30,6 +30,7 @@ function Page() {
     <Shell>
       <SubHero en="INFORMATION" title="변경된 청약제도" crumbs="청약안내 / 변경된 청약제도" />
       <QuickAnswer path="/changeinfo" />
+      <PageFaq path="/changeinfo" />
       <article className="ak-wrap ak-page">
         <div className="ak-cols">
           <div>

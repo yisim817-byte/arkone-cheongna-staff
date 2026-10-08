@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Nb } from "@/components/chrome";
-import { Photo, Shell, SourceNote, SubHero, pageHead, QuickAnswer } from "@/components/layout";
+import { Photo, Shell, SourceNote, SubHero, pageHead, PageFaq, QuickAnswer } from "@/components/layout";
 import { DepositTable } from "@/components/role";
 import { img } from "@/data/content";
 
@@ -37,6 +37,7 @@ function Page() {
     <Shell>
       <SubHero en="INFORMATION" title="일반공급 안내" crumbs="청약안내 / 일반공급 안내" />
       <QuickAnswer path="/docnormal" />
+      <PageFaq path="/docnormal" />
       <article className="ak-wrap ak-page">
         <div className="ak-cols">
           <div>
