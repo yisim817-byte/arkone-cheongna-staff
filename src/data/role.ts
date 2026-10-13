@@ -6,7 +6,7 @@ import type { Role, RoleFigure, StripCell } from "./role-types";
  */
 
 /**
- * 10월 15일·23일 일정의 1차 출처(사업주체 공지 또는 입주자모집공고)를 총괄 PM이 확인하면 true로 바꾼다.
+ * 10월 22일(모집공고)·30일(GRAND OPEN) 일정의 1차 출처(사업주체 공지 또는 입주자모집공고)를 총괄 PM이 확인하면 true로 바꾼다.
  * false인 동안에는 달력의 날짜 표시와 일정 띠의 일자를 화면에 올리지 않는다.
  * 입주자모집공고가 나오면 아래 띠의 값을 공고문 값으로 바꾼다.
  */
@@ -17,10 +17,10 @@ const FIGURE_CONFIRMED: RoleFigure = {
   year: 2026,
   month: 10,
   marks: [
-    { day: 15, style: "fill", label: "모집공고 10.22 · GRAND OPEN 10.23 예정" },
-    { day: 23, style: "ring", label: "일정 문의 1666-4250" },
+    { day: 22, style: "fill", label: "모집공고 10.22 예정" },
+    { day: 30, style: "ring", label: "GRAND OPEN 10.30 예정" },
   ],
-  alt: "2026년 10월. 모집공고 10.22 · GRAND OPEN 10.23 예정",
+  alt: "2026년 10월. 모집공고 10.22 · GRAND OPEN 10.30 예정",
 };
 
 const FIGURE_PENDING: RoleFigure = {
@@ -29,7 +29,7 @@ const FIGURE_PENDING: RoleFigure = {
   month: 10,
   status: "OPEN 예정",
   note: "일정은 사업주체 사정에 따라 변경될 수 있습니다.",
-  alt: "2026년 10월 모집공고 10.22 · GRAND OPEN 10.23 예정",
+  alt: "2026년 10월 모집공고 10.22 · GRAND OPEN 10.30 예정",
 };
 
 const STRIP_CONFIRMED: StripCell[] = [
@@ -37,14 +37,14 @@ const STRIP_CONFIRMED: StripCell[] = [
     no: "1",
     label: "입주자모집공고",
     chip: { kind: "soon", text: "예정" },
-    value: "일정 문의",
+    value: "10.22",
     desc: "사업주체 사정에 따라 변경될 수 있습니다.",
   },
   {
     no: "2",
     label: "GRAND OPEN",
     chip: { kind: "soon", text: "예정" },
-    value: "10월 중",
+    value: "10.30",
     desc: "견본주택 청라동 87-1번지",
   },
   {
@@ -73,7 +73,7 @@ const STRIP_PENDING: StripCell[] = [
   {
     label: "GRAND OPEN",
     chip: { kind: "soon", text: "예정" },
-    value: "10.23",
+    value: "10.30",
     desc: "견본주택 청라동 87-1번지",
   },
   {
@@ -109,7 +109,7 @@ export const ROLE: Role = {
   story: {
     title: "청약·일정 요약",
     paras: [
-      "청라 아크원 푸르지오의 청약 일정은 입주자모집공고 게시 후 확정됩니다. 현재 공개된 일정은 입주자모집공고 2026.10.22, 견본주택(청라동 87-1번지) GRAND OPEN 2026.10.23 예정이며, 사업주체 사정에 따라 변경될 수 있습니다.",
+      "청라 아크원 푸르지오의 청약 일정은 입주자모집공고 게시 후 확정됩니다. 현재 공개된 일정은 입주자모집공고 2026.10.22, 견본주택(청라동 87-1번지) GRAND OPEN 2026.10.30 예정이며, 사업주체 사정에 따라 변경될 수 있습니다.",
       "청약은 특별공급과 일반공급으로 나뉩니다. 특별공급은 기관추천·경제자유구역·다자녀·신혼부부·생애최초·신생아·노부모부양 유형이 있고, 일반공급은 청약 자격, 통장 가입기간과 예치금, 가점제·추첨제 비율을 확인해야 합니다.",
       "신생아 특별공급 신설, 배우자 통장 가입기간 합산 등 바뀐 제도는 변경된 청약제도 페이지에 정리했습니다.",
       "최종 자격과 기준, 당첨자 발표와 계약 일정은 입주자모집공고와 청약홈을 따릅니다.",
