@@ -69,7 +69,7 @@ function Page() {
               <div className="ak-details__body">
                 <Photo
                   src={img("/resources/img/sub/03_특별공급.v4.jpg")}
-                  alt="특별공급 안내"
+                  alt="특별공급 유형과 예치금 기준이 적힌 표"
                   className="w-full"
                 />
               </div>

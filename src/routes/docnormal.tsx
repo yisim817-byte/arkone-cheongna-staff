@@ -74,7 +74,7 @@ function Page() {
               <div className="ak-details__body">
                 <Photo
                   src={img("/resources/img/sub/02_일반공급.v4.jpg")}
-                  alt="일반공급 안내"
+                  alt="청약 전 확인 사항과 예치금 기준이 적힌 표"
                   className="w-full"
                 />
               </div>
