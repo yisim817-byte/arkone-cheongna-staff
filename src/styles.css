@@ -5168,3 +5168,6 @@ body.prereg-lock { overflow: hidden; }
 .ak-hd > .ak-wrap.ak-hd__row { width: auto; max-width: none; margin: 0; padding: 0 20px; }
 @media (min-width: 1025px) { .ak-hd > .ak-wrap.ak-hd__row { padding: 0 50px; } .ak-hd__nav { margin-left: auto; margin-right: auto; } }
 @media (min-width: 1421px) { .ak-hd > .ak-wrap.ak-hd__row { padding: 0 80px; } }
+/* PM 지시(2026-10-22): /overview 평면 아래 공급금액 한 줄 · 평면 아래 공급금액표 */
+.notice-lines .plan-figure__price, .plan-figure__price { margin: -16px 0 24px; font-size: 15px; font-weight: 700; color: #004b45; }
+.notice-price-inline { margin: 8px 0 28px; }
