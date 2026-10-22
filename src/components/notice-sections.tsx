@@ -75,14 +75,14 @@ export function NoticeSchedule() {
   );
 }
 
-/** M3 · 공급금액표 (공고문 6~20면 · 주택형별 최저~최고) */
-export function NoticePrice() {
+/** 공급금액표 본문(표 + 84A 라인 + 고정 문구 3줄 + 발코니 확장비 표). /changeinfo 와 /overview(평면 아래)가 같이 쓴다. */
+function PriceBody() {
   const rows = NOTICE.prices.map((p) => [p.type, p.units, `${p.min} ~ ${p.max}`]);
   const [l3, l5] = NOTICE.priceLines84A;
   const balconyCols = ["구분", ...NOTICE.balcony.map((b) => b.type)];
   const balconyRows = [["발코니 확장비", ...NOTICE.balcony.map((b) => b.price)]];
   return (
-    <Block label="공급금액" title="공급금액 (입주자모집공고 기준)">
+    <>
       <Table columns={["주택형", "세대수", "공급금액 (최저 ~ 최고)"]} rows={rows} />
       <Lines
         lines={[
@@ -94,8 +94,23 @@ export function NoticePrice() {
       />
       <h3 className="notice-h3">발코니 확장비 (VAT 포함 · 계약금 10% · 잔금 90%)</h3>
       <Table columns={balconyCols} rows={balconyRows} />
+    </>
+  );
+}
+
+/** M3 · 공급금액표 (공고문 6~20면 · 주택형별 최저~최고) */
+export function NoticePrice() {
+  return (
+    <Block label="공급금액" title="공급금액 (입주자모집공고 기준)">
+      <PriceBody />
     </Block>
   );
+}
+
+/** 평면 아래 한 줄: 그 주택형 공급금액(최저~최고). 금액이 SSR 에서 끊기지 않게 한 문자열로 만든다. */
+function planPriceLine(type: "84C" | "103A", name: string) {
+  const p = NOTICE.prices.find((x) => x.type === type);
+  return p ? `${name} 공급금액 ${p.min} ~ ${p.max} (동·층·호별 상이)` : "";
 }
 
 /** M4 · 납부 조건 (비율만) */
@@ -161,8 +176,9 @@ export function NoticeSpecial() {
 const PLAN_NOTE = "분양 안내 자료의 평면을 다시 그린 안내용 이미지입니다. 실제와 다를 수 있으며 입주자모집공고문과 견본주택이 우선합니다.";
 
 /** 평면 안내도(작업지시서 12 · 3절). 누르면 원본 PNG 새 창(휴대폰 확대용). */
-function PlanFigure({ file, alt }: { file: string; alt: string }) {
+function PlanFigure({ file, alt, price }: { file: string; alt: string; price?: string }) {
   return (
+    <>
     <figure className="plan-figure">
       <a href={`/plans/${file}.png`} target="_blank" rel="noopener">
         <picture>
@@ -172,6 +188,8 @@ function PlanFigure({ file, alt }: { file: string; alt: string }) {
       </a>
       <figcaption>{PLAN_NOTE}</figcaption>
     </figure>
+    {price ? <p className="plan-figure__price">{price}</p> : null}
+    </>
   );
 }
 
@@ -197,11 +215,16 @@ export function NoticeTypes() {
       <div className="notice-lines">
         <p>{`총 ${s.total}세대 (특별공급 ${s.special}세대 · 일반공급 ${s.general}세대) · ${s.buildings}개동 · ${s.floors} · 입주 ${s.moveIn}`}</p>
         <p>84㎡C — 4Bay 판상형, 맞통풍 구조, 2면 개방, 팬트리 수납</p>
-        <PlanFigure file="plan-84c-redraw-v2" alt="청라 아크원 푸르지오 84㎡C 평면 안내도" />
+        <PlanFigure file="plan-84c-redraw-v2" alt="청라 아크원 푸르지오 84㎡C 평면 안내도" price={planPriceLine("84C", "84㎡C")} />
         <UnitFigure file="unit-84c-living-ai.webp" alt="84㎡C 거실 인테리어 연출 이미지(AI 제작)" />
         <UnitFigure file="unit-84c-living-kitchen-ai.webp" alt="84㎡C 거실·주방 인테리어 연출 이미지(AI 제작)" />
         <p>103㎡A — 알파룸을 더해 방 4개처럼 쓸 수 있는 구성, 넓은 팬트리, 별도 세탁실</p>
-        <PlanFigure file="plan-103a-redraw-v2" alt="청라 아크원 푸르지오 103㎡A 평면 안내도" />
+        <PlanFigure file="plan-103a-redraw-v2" alt="청라 아크원 푸르지오 103㎡A 평면 안내도" price={planPriceLine("103A", "103㎡A")} />
+        {/* PM 지시(2026-10-22): 평면 2장 바로 아래 공급금액표(/changeinfo 와 같은 내용) */}
+        <div className="notice-price-inline" aria-label="공급금액">
+          <h3 className="notice-h3">공급금액 (입주자모집공고 기준)</h3>
+          <PriceBody />
+        </div>
         <UnitFigure file="unit-103a-alpha-study-ai.webp" alt="103㎡A 알파룸을 서재로 꾸민 인테리어 연출 이미지(AI 제작)" />
         <p>※ 특화 내용은 현장 상품 설명 자료 기준이며 주택형·옵션 선택에 따라 다를 수 있으니 견본주택에서 확인해 주세요.</p>
         <p>견본주택에는 84A·103A 유니트가 설치되어 있습니다.</p>
