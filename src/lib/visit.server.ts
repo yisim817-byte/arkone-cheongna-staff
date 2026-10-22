@@ -7,12 +7,12 @@ const SLOT_LABEL: Record<string, string> = { AM: "오전", PM: "오후", ANY: "�
 
 export type VisitPick = { date: string; slot: "AM" | "PM" | "ANY"; label: string };
 
-export async function checkVisit(date: string | undefined, slot: string | undefined): Promise<VisitPick | null> {
+export async function checkVisit(date: string | undefined, slot: string | undefined, originOverride?: string): Promise<VisitPick | null> {
   if (!date) return null;
   const s = slot || "ANY";
   if (s !== "AM" && s !== "PM" && s !== "ANY") return null;
-  let origin = "";
-  try {
+  let origin = originOverride ?? "";
+  if (!origin) try {
     const host = getRequest()?.headers.get("host");
     if (host) origin = `https://${host}`;
   } catch {

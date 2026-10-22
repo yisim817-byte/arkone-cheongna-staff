@@ -115,12 +115,18 @@ function useChromeVars(root: React.RefObject<HTMLDivElement | null>) {
       if (!el) return;
       const hd = document.querySelector<HTMLElement>(".ak-hd");
       el.style.setProperty("--om-hd", `${hd?.offsetHeight ?? 0}px`);
+      // 작업지시서 13: 헤더 아래 단계 띠 높이 — 히어로가 띠 아래에서 시작하므로 무대 높이에서 뺀다
+      const band = document.querySelector<HTMLElement>(".ak-phase-band-slot");
+      el.style.setProperty("--om-band", `${band?.offsetHeight ?? 0}px`);
       el.style.setProperty("--om-vh", `${window.innerHeight}px`);
       el.style.setProperty("--om-scale", String(document.documentElement.clientWidth / 1920));
     };
     sync();
     window.addEventListener("resize", sync);
-    return () => window.removeEventListener("resize", sync);
+    const slot = document.querySelector<HTMLElement>(".ak-phase-band-slot");
+    const ro = typeof ResizeObserver === "function" && slot ? new ResizeObserver(sync) : null;
+    if (ro && slot) ro.observe(slot);
+    return () => { window.removeEventListener("resize", sync); ro?.disconnect(); };
   }, [root]);
 }
 

@@ -13,7 +13,8 @@ import { SEO_FAQS, SEO_PAGES } from "@/data/seo";
 
 export function Header() {
   const [open, setOpen] = useState(false);
-  const menu = NAV.filter((item) => item.href !== "/register");
+  // 작업지시서 13: 아크원푸르지오.site 처럼 「사전고객등록」·「방문예약」을 메뉴 줄에 둔다(별도 버튼 없음).
+  const menu = NAV;
   return (
     <header className="ak-hd">
       <div className="ak-wrap ak-hd__row">
@@ -44,9 +45,6 @@ export function Header() {
           <small>상담</small>
           {PROJECT_PHONE_DISPLAY}
         </a>
-        <Link to="/register" className="ak-btn ak-btn--primary ak-btn--sm ak-hd__cta">
-          {REGISTER_LABEL}
-        </Link>
         <button
           type="button"
           className="ak-hd__menu"

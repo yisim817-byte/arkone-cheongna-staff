@@ -6,6 +6,7 @@ const PHASE_CFG = {
   fnUrl: "https://jzmktahlrwtrtejjflrw.supabase.co/functions/v1/arkone-site-phase",
   fnHeaders: {}, // arkone-visit-config 호출과 같은 방식(별도 헤더·anon 키 없음)
   registerPath: "/register",
+  visitPath: "/visit",
   scheduleHref: "/changeinfo",
   noticeUrl: "https://www.applyhome.co.kr/ai/aia/selectAPTLttotPblancDetail.do?houseManageNo=2026000496&pblancNo=2026000496",
 };
