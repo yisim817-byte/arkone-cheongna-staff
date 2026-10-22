@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import { Link } from "@tanstack/react-router";
 import { NOTICE } from "@/lib/notice-facts.v1";
 import { PROJECT_PHONE_DISPLAY } from "@/data/content";
 
@@ -173,7 +174,7 @@ export function NoticeSpecial() {
   );
 }
 
-const PLAN_NOTE = "분양 안내 자료의 평면을 다시 그린 안내용 이미지입니다. 실제와 다를 수 있으며 입주자모집공고문과 견본주택이 우선합니다.";
+export const PLAN_NOTE = "분양 안내 자료의 평면을 다시 그린 안내용 이미지입니다. 실제와 다를 수 있으며 입주자모집공고문과 견본주택이 우선합니다.";
 
 /** 평면 안내도(작업지시서 12 · 3절). 누르면 원본 PNG 새 창(휴대폰 확대용). */
 function PlanFigure({ file, alt, price }: { file: string; alt: string; price?: string }) {
@@ -202,6 +203,46 @@ function UnitFigure({ file, alt }: { file: string; alt: string }) {
       <img src={`/units/${file}`} alt={alt} width={1168} height={784} loading="lazy" decoding="async" />
       <figcaption>{UNIT_NOTE}</figcaption>
     </figure>
+  );
+}
+
+/** 평면·분양가(/plans): 평면 2장(가격 한 줄 포함) 바로 아래 공급금액표. /changeinfo 와 같은 PriceBody. */
+export function NoticePlans() {
+  return (
+    <Block label="평면·분양가" title="평면·분양가">
+      <div className="notice-lines">
+        <PlanFigure file="plan-84c-redraw-v2" alt="청라 아크원 푸르지오 84㎡C 평면 안내도" price={planPriceLine("84C", "84㎡C")} />
+        <PlanFigure file="plan-103a-redraw-v2" alt="청라 아크원 푸르지오 103㎡A 평면 안내도" price={planPriceLine("103A", "103㎡A")} />
+        <div className="notice-price-inline" aria-label="공급금액">
+          <h3 className="notice-h3">공급금액 (입주자모집공고 기준)</h3>
+          <PriceBody />
+        </div>
+      </div>
+    </Block>
+  );
+}
+
+/** 「8억 3,780만원」 → 만원 단위 숫자 */
+function manwon(v: string): number {
+  const m = /(\d+)억(?:\s*([\d,]+)만)?/.exec(v);
+  return m ? Number(m[1]) * 10000 + Number((m[2] ?? "0").replace(/,/g, "")) : NaN;
+}
+
+/** 면적대(84·103) 공급금액 범위: 그 면적대 주택형들의 최저 중 최저 ~ 최고 중 최고. 문자열은 팩트 파일 표기 그대로. */
+export function priceRange(area: "84" | "103"): string {
+  const list = NOTICE.prices.filter((p) => p.type.startsWith(area) && /^\d+[A-D]$/.test(p.type) && p.type.length === area.length + 1);
+  if (!list.length) return "";
+  const lo = list.reduce((a, b) => (manwon(b.min) < manwon(a.min) ? b : a)).min;
+  const hi = list.reduce((a, b) => (manwon(b.max) > manwon(a.max) ? b : a)).max;
+  return `${lo} ~ ${hi}`;
+}
+
+/** 평면·공급금액 한 페이지(/plans)로 가는 한 줄. */
+export function PlansLink() {
+  return (
+    <p className="ak-wrap plans-link">
+      <Link to="/plans">평면도·공급금액 한눈에 보기 →</Link>
+    </p>
   );
 }
 

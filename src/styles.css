@@ -5171,3 +5171,29 @@ body.prereg-lock { overflow: hidden; }
 /* PM 지시(2026-10-22): /overview 평면 아래 공급금액 한 줄 · 평면 아래 공급금액표 */
 .notice-lines .plan-figure__price, .plan-figure__price { margin: -16px 0 24px; font-size: 15px; font-weight: 700; color: #004b45; }
 .notice-price-inline { margin: 8px 0 28px; }
+/* PM 지시(2026-10-22): 평면·분양가 페이지로 가는 버튼·링크 */
+.om-hero__plans { display: flex; align-items: center; width: max-content; min-height: 44px; margin-top: 16px; padding: 0 22px; border: 1px solid rgba(255, 255, 255, 0.85); border-radius: 999px; background: rgba(0, 75, 69, 0.88); color: #fff; font-size: 16px; font-weight: 700; text-decoration: none; position: relative; z-index: 2; pointer-events: auto; }
+.om-hero__plans:hover { background: #004b45; }
+.om-hero[data-step="hero-definition"] .om-hero__plans { opacity: 0; pointer-events: none; }
+.plans-link { margin-top: 24px; margin-bottom: 0; font-size: 16px; font-weight: 700; }
+.plans-link a { color: #004b45; text-decoration: underline; text-underline-offset: 3px; }
+/* PM 지시(2026-10-22): 홈 「평면도 · 공급금액」 배너 (히어로 바로 아래) */
+.om-plans { padding: 48px 20px; background: #f7f3ea; scroll-margin-top: var(--om-hd, 72px); }
+.om-plans__card { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); gap: 32px; align-items: center; max-width: 1120px; margin: 0 auto; padding: 36px 40px; border-radius: 8px; background: #032b20; color: #f7f3ea; text-decoration: none; font-family: var(--font-sans); }
+.om-plans__title { margin: 0; font-size: 34px; font-weight: 800; line-height: 1.25; color: #fff; }
+.om-plans__sub { margin: 10px 0 0; font-size: 16px; line-height: 1.6; color: #f7f3ea; }
+.om-plans__price { margin: 14px 0 0; font-size: 17px; font-weight: 700; line-height: 1.6; color: #fff; word-break: keep-all; }
+.om-plans__btn { display: inline-flex; align-items: center; height: 48px; margin-top: 20px; padding: 0 24px; border-radius: 999px; background: #e2b565; color: #032b20; font-size: 16px; font-weight: 800; }
+.om-plans__card:hover .om-plans__btn { background: #ecc57d; }
+.om-plans__thumbs { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.om-plans__thumbs img { display: block; width: 100%; height: auto; border-radius: 6px; background: #fff; }
+.om-plans__note { margin: 10px 0 0; font-size: 12px; line-height: 1.5; color: rgba(247, 243, 234, 0.8); }
+@media (max-width: 767px) {
+  .om-plans { padding: 28px 16px; }
+  .om-plans__card { grid-template-columns: 1fr; gap: 20px; padding: 24px 18px; }
+  .om-plans__title { font-size: 26px; }
+  .om-plans__sub { font-size: 15px; }
+  .om-plans__price { font-size: 15px; }
+  .om-plans__btn { width: 100%; justify-content: center; }
+}
+.om-plans__nw { white-space: nowrap; }

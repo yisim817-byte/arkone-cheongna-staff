@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { NoticePayment, NoticePrice, NoticeSchedule } from "@/components/notice-sections";
+import { NoticePayment, NoticePrice, NoticeSchedule, PlansLink } from "@/components/notice-sections";
 import { Nb } from "@/components/chrome";
 import { Photo, Shell, SourceNote, SubHero, pageHead, PageFaq, QuickAnswer } from "@/components/layout";
 import { img } from "@/data/content";
@@ -31,6 +31,7 @@ function Page() {
     <Shell>
       <SubHero en="INFORMATION" title="변경된 청약제도" crumbs="청약안내 / 변경된 청약제도" />
       <NoticeSchedule />
+      <PlansLink />
       <NoticePrice />
       <NoticePayment />
       <QuickAnswer path="/changeinfo" />
