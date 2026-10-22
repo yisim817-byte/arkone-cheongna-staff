@@ -1,5 +1,6 @@
 export const SITE_ID = "arkone-cheongna-staff";
-export const OFFICIAL = "https://arkone-prugio.com";
+// 작업지시서 12 (2026-10-22): 공식 홈페이지 서버 주소 의존 제거 — 같은 이미지를 이 저장소 public/resources·public/upload 로 옮겨 자기 경로로 쓴다.
+export const OFFICIAL = "";
 export const img = (path: string) => `${OFFICIAL}${encodeURI(path)}`;
 
 export const PROJECT_PHONE_DISPLAY = "1666-4250";
