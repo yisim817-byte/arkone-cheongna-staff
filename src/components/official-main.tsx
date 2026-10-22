@@ -2,6 +2,7 @@ import { Link } from "@tanstack/react-router";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { PLACES, img } from "@/data/content";
 import { REGISTER_LABEL } from "@/data/labels";
+import { PLAN_NOTE, priceRange } from "@/components/notice-sections";
 import { ROLE } from "@/data/role";
 
 /**
@@ -57,13 +58,14 @@ const BRAND_CARDS = [
 ] as const;
 
 /** 구간(공식 섹션 7개 + 검색용 묶음). 순서는 공식 메인과 같다. */
-const SECTIONS = ["hero", "overview", "location", "history", "premium", "brand", "contact", "site-info"] as const;
+const SECTIONS = ["hero", "plans", "overview", "location", "history", "premium", "brand", "contact", "site-info"] as const;
 type SectionId = (typeof SECTIONS)[number];
 
 /** PC 장면 16개(+ 검색용 묶음). 구간 안의 단계는 공식 main.v4.css 의 data-flow-step 값과 같다. */
 const SCENES: { sec: SectionId; step: string }[] = [
   { sec: "hero", step: "hero-final" },
   { sec: "hero", step: "hero-definition" },
+  { sec: "plans", step: "plans-01" },
   { sec: "overview", step: "overview-mask" },
   { sec: "overview", step: "overview-content" },
   { sec: "location", step: "location-01" },
@@ -556,6 +558,28 @@ export function OfficialMain({ children }: { children?: React.ReactNode }) {
       </section>
 
       {/* ── 3·4 사업개요 ───────────────────────────────────────────── */}
+      {/* PM 지시(2026-10-22): 히어로 바로 아래 「평면도 · 공급금액」 배너 → /plans (배너 전체가 링크). 금액은 팩트 파일에서. */}
+      <section id="plans" className="om-plans" aria-label="평면도 · 공급금액">
+        <Link to="/plans" className="om-plans__card">
+          <div className="om-plans__text">
+            <h2 className="om-plans__title">평면도 · 공급금액</h2>
+            <p className="om-plans__sub">84㎡C · 103㎡A 평면도와 주택형별 공급금액 (입주자모집공고 기준)</p>
+            <p className="om-plans__price">
+              <span className="om-plans__nw">{`84㎡ ${priceRange("84")}`}</span> · <span className="om-plans__nw">{`103㎡ ${priceRange("103")}`}</span>{" "}
+              <span className="om-plans__nw">(동·층·호별 상이, 발코니 확장 등 별도)</span>
+            </p>
+            <span className="om-plans__btn">평면도·공급금액 보기 →</span>
+          </div>
+          <div className="om-plans__media">
+            <div className="om-plans__thumbs">
+              <img src="/plans/plan-84c-redraw-v2.webp" alt="청라 아크원 푸르지오 84㎡C 평면 안내도" width={1600} height={1000} loading="lazy" decoding="async" />
+              <img src="/plans/plan-103a-redraw-v2.webp" alt="청라 아크원 푸르지오 103㎡A 평면 안내도" width={1600} height={1000} loading="lazy" decoding="async" />
+            </div>
+            <p className="om-plans__note">{PLAN_NOTE}</p>
+          </div>
+        </Link>
+      </section>
+
       <section id="overview" className={`om-s om-overview${active("overview")}`} data-step={step("overview")} aria-labelledby="om-overview-title">
         <div className="om-overview__stage">
           <div className="om-overview__background" aria-hidden="true">
