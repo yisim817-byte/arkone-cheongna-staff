@@ -167,7 +167,7 @@ function PlanFigure({ file, alt }: { file: string; alt: string }) {
       <a href={`/plans/${file}.png`} target="_blank" rel="noopener">
         <picture>
           <source type="image/webp" srcSet={`/plans/${file}.webp`} />
-          <img src={`/plans/${file}.png`} alt={alt} width={2400} height={1500} loading="lazy" decoding="async" />
+          <img src={`/plans/${file}.png`} alt={alt} width={2000} height={1250} loading="lazy" decoding="async" />
         </picture>
       </a>
       <figcaption>{PLAN_NOTE}</figcaption>
