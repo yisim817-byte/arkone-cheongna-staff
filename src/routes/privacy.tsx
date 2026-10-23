@@ -22,7 +22,7 @@ function Page() {
         </section>
         <section>
           <h2 className="ak-h3">보유</h2>
-          <p className="mt-3">관리 화면에서 해당 접수를 삭제할 때까지 보유합니다. 자동 파기 일수를 정해 두지 않았습니다. 삭제하면 이 사이트의 저장본에서 지웁니다.</p>
+          <p className="mt-3">분양 종료 시 파기합니다. 파기하면 이 사이트의 저장본에서 지웁니다.</p>
         </section>
         <section>
           <h2 className="ak-h3">알림</h2>
