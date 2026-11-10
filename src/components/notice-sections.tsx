@@ -67,7 +67,7 @@ export function NoticeSchedule() {
           "당첨자 발표 11.10(화)",
           "당첨자 서류접수 11.12(목)~11.16(월)",
           "계약 11.22(일)~11.24(화)",
-          "견본주택 GRAND OPEN 10.30(금) · 인천광역시 서해구 청라동 87-1",
+          "견본주택 별도 공지 시까지 운영 · 인천광역시 서해구 청라동 87-1",
           "청약은 한국부동산원 청약홈(www.applyhome.co.kr)에서 인터넷으로 신청합니다.",
           "※ 일정은 사업주체 사정에 따라 변경될 수 있으며, 입주자모집공고문이 우선합니다.",
         ]}
@@ -211,8 +211,6 @@ export function NoticePlans() {
   return (
     <Block label="평면·분양가" title="평면·분양가">
       <div className="notice-lines">
-        <PlanFigure file="plan-84c-redraw-v2" alt="청라 아크원 푸르지오 84㎡C 평면 안내도" price={planPriceLine("84C", "84㎡C")} />
-        <PlanFigure file="plan-103a-redraw-v2" alt="청라 아크원 푸르지오 103㎡A 평면 안내도" price={planPriceLine("103A", "103㎡A")} />
         <div className="notice-price-inline" aria-label="공급금액">
           <h3 className="notice-h3">공급금액 (입주자모집공고 기준)</h3>
           <PriceBody />

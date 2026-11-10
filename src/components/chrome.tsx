@@ -13,7 +13,7 @@ import { SEO_FAQS, SEO_PAGES } from "@/data/seo";
 
 export function Header() {
   const [open, setOpen] = useState(false);
-  // 작업지시서 13: 아크원푸르지오.site 처럼 「사전고객등록」·「방문예약」을 메뉴 줄에 둔다(별도 버튼 없음).
+  // 작업지시서 13: 헤더는 아크원푸르지오.site(A)와 같은 모양 — 사전고객등록·방문예약도 메뉴 글자로 둔다(버튼 없음).
   const menu = NAV;
   return (
     <header className="ak-hd">
@@ -41,10 +41,13 @@ export function Header() {
             </div>
           ))}
         </nav>
+        <a href="#popup_soon_commercial" className="ak-hd__commercial" data-popup-soon="commercial" aria-haspopup="dialog">
+          근린생활시설
+        </a>
         <a href={PROJECT_PHONE_TEL} className="ak-hd__tel ak-num">
-          <small>상담</small>
           {PROJECT_PHONE_DISPLAY}
         </a>
+        <a href={PROJECT_PHONE_TEL} className="ak-hd__mtel" aria-label={`전화 상담 ${PROJECT_PHONE_DISPLAY}`} />
         <button
           type="button"
           className="ak-hd__menu"
@@ -76,6 +79,12 @@ export function Header() {
                 </div>
               );
             })}
+            <a href="#popup_soon_officetel" data-popup-soon="officetel" aria-haspopup="dialog" onClick={() => setOpen(false)}>
+              오피스텔 오픈예정
+            </a>
+            <a href="#popup_soon_commercial" className="ak-hd__commercial" data-popup-soon="commercial" aria-haspopup="dialog" onClick={() => setOpen(false)}>
+              근린생활시설
+            </a>
           </div>
         </div>
       ) : null}
@@ -131,7 +140,7 @@ export function MobileBar() {
   if (NO_BAR.some((p) => path === p || path.startsWith(`${p}/`))) return null;
   return (
     <nav className="ak-mbar" aria-label="빠른 연결">
-      <a href={PROJECT_PHONE_TEL}>전화 상담</a>
+      <a href={PROJECT_PHONE_TEL}>전화상담 {PROJECT_PHONE_DISPLAY}</a>
       <Link to="/register">{REGISTER_LABEL}</Link>
     </nav>
   );

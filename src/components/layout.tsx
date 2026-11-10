@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { PhaseBand } from "@/components/phase-band";
 import { Footer, Header, MobileBar } from "@/components/chrome";
+import { SoonPopups } from "@/components/soon-popups";
 import { SEO_FAQS, SEO_ORIGIN, SEO_PAGES } from "@/data/seo";
 import { IMAGE_SIZES } from "@/data/image-sizes";
 
@@ -46,12 +47,13 @@ export function Photo({
 export function Shell({ children }: { children: React.ReactNode }) {
   return (
     <div className="min-h-screen bg-paper text-ink">
-      {/* 작업지시서 13: 아크원푸르지오.site 와 같이 헤더 → 단계 띠 → 본문. 홈 히어로는 띠 아래에서 시작한다(styles.css 끝 WO13 블록) */}
+      {/* 작업지시서 13: 아크원푸르지오.site(A)와 같은 순서 — 헤더 → 단계 띠 → 본문. 홈 헤더는 불투명(검정)이고 히어로는 띠 아래에서 시작한다(styles.css 끝 WO13 블록) */}
       <Header />
       <PhaseBand />
       {children}
       <Footer />
       <MobileBar />
+      <SoonPopups />
     </div>
   );
 }
@@ -72,13 +74,13 @@ const PAGE_DESCRIPTION: Record<string, string> = {
   입지환경: "청라 아크원 푸르지오 입지 안내. 교통·생활 인프라 일정은 바뀔 수 있습니다.",
   프리미엄: "청라 아크원 푸르지오 단지 특징과 구성 안내.",
   "오시는 길": "청라 아크원 푸르지오 현장, 견본주택, 홍보관 위치 안내.",
-  "변경된 청약제도": "변경된 청약제도 안내. 자격과 일정은 입주자모집공고를 따릅니다.",
+  "변경된 청약제도": "변경된 청약제도와 주택형별 공급금액 안내. 자격과 일정은 입주자모집공고를 따릅니다.",
   "특별공급 안내": "특별공급 안내. 자격과 일정은 입주자모집공고를 따릅니다.",
   "일반공급 안내": "일반공급 안내. 자격과 일정은 입주자모집공고를 따릅니다.",
   언론보도: "청라 아크원 푸르지오 관련 언론 기사 목록.",
   홍보영상: "청라 아크원 푸르지오 홍보영상.",
-  사전고객등록: "사전고객등록 안내. 청약 신청이 아니며 주민등록번호는 받지 않습니다.",
-  "아파트 사전고객등록 이벤트": "사전고객등록 이벤트 조건 안내. 등록만으로 지급되지 않으며 청약 신청이 아닙니다.",
+  사전고객등록: "사전고객등록 안내. 주민등록번호는 받지 않습니다.",
+  "상가·오피스텔 사전등록 이벤트": "사전고객등록 이벤트 조건 안내. 등록만으로 지급되지 않습니다.",
   개인정보처리방침: "개인정보 처리방침.",
   "접수 관리": "운영자 접수 확인 화면.",
   "관리자 로그인": "운영자 로그인.",
@@ -89,7 +91,7 @@ const PAGE_DESCRIPTION: Record<string, string> = {
  * path가 SEO_PAGES(역할 페이지)에 있으면 index,follow + 전용 title·description + JSON-LD.
  * 그 밖의 페이지는 기존대로 noindex, nofollow.
  */
-export function pageHead(title: string, path?: string, opts: { canonical?: boolean } = {}) {
+export function pageHead(title: string, path?: string) {
   const seo = path ? SEO_PAGES[path] : undefined;
   const url = path === undefined ? undefined : path === "/" ? SEO_ORIGIN : `${SEO_ORIGIN}${path}`;
   const full = seo?.title ?? `${title} | 청라 아크원 푸르지오`;
@@ -111,7 +113,7 @@ export function pageHead(title: string, path?: string, opts: { canonical?: boole
           ]
         : []),
     ],
-    links: url && opts.canonical !== false ? [{ rel: "canonical", href: url }] : [],
+    links: url ? [{ rel: "canonical", href: url }] : [],
     scripts:
       seo && url && path
         ? [
