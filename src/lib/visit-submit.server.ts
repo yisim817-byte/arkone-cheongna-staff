@@ -1,6 +1,7 @@
 import { getSql, dbSource } from "@/lib/db";
 import { SITE_ID } from "@/data/content";
 import { checkVisit } from "@/lib/visit.server";
+import { VISIT_CLOSED_MESSAGE, VISIT_ONLINE } from "@/data/visit-mode";
 
 // 작업지시서 13: 모델하우스 방문예약 접수(/api/visit). 사전고객등록(leads)과 따로 visit_reservations 에 쓴다.
 // - 휴대폰 010 11자리. 방문 희망일은 arkone-visit-config 목록 안의 날짜만(밖이면 날짜만 비우고 접수).
@@ -25,6 +26,8 @@ function json(status: number, body: Record<string, unknown>) {
 }
 
 export async function handleVisitSubmit(request: Request): Promise<Response> {
+  // PM 지시 2026-11-18: 온라인 방문예약을 닫은 동안에는 저장하지 않고 전화 안내만 돌려준다.
+  if (!VISIT_ONLINE) return json(403, { ok: false, error: VISIT_CLOSED_MESSAGE });
   const raw = await request.text();
   if (raw.length > 4000) return json(413, { ok: false, error: "요청이 너무 깁니다." });
   let b: Body;
