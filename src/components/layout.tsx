@@ -69,7 +69,7 @@ export function SourceNote({ children }: { children?: React.ReactNode }) {
 }
 
 const PAGE_DESCRIPTION: Record<string, string> = {
-  "청라 아크원 푸르지오": "청라 아크원 푸르지오 사업개요, 입지, 평면 및 분양 관련 안내. 상담과 이벤트 적용 조건을 확인하세요.",
+  "청라 아크원 푸르지오": "청라 아크원 푸르지오 사업개요, 입지, 평면 및 분양 관련 안내. 상담 일정을 확인하세요.",
   사업개요: "청라 아크원 푸르지오 사업개요. 대지 위치, 규모, 세대 구성 안내.",
   히스토리: "청라 일대 개발 연혁과 청라 아크원 푸르지오 안내.",
   입지환경: "청라 아크원 푸르지오 입지 안내. 교통·생활 인프라 일정은 바뀔 수 있습니다.",
@@ -99,7 +99,7 @@ export function pageHead(title: string, path?: string) {
   const description =
     seo?.description ??
     PAGE_DESCRIPTION[title] ??
-    "청라 아크원 푸르지오 사업개요, 입지, 평면 및 분양 관련 안내. 상담과 이벤트 적용 조건을 확인하세요.";
+    "청라 아크원 푸르지오 사업개요, 입지, 평면 및 분양 관련 안내. 상담 일정을 확인하세요.";
   return {
     meta: [
       { title: full },

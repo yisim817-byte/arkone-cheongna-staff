@@ -110,8 +110,6 @@ function Page() {
         <section className="register-layout">
           <aside className="register-layout__summary" aria-label="이벤트 및 일정 안내">
             <p className="prereg-deadline" style={{ color: "#a8834a", fontWeight: 700, letterSpacing: "-0.01em" }}>상가·오피스텔 상시 접수</p>
-            <p>상가·오피스텔 사전등록 후 오피스텔·상가 계약 시 백화점 상품권 50만원 (롯데·현대·신세계 중 선택) · 11월 20일(금)까지</p>
-            <a href="/event">유의사항 보기</a>
             <div className="register-layout__schedule">
               <h2>모집 일정</h2>
               <p>입주자모집공고 게시 2026.10.22(목) · 견본주택 별도 공지 시까지 운영 · 세부 일정 문의 {PROJECT_PHONE_DISPLAY}</p>
@@ -203,7 +201,6 @@ function Page() {
                         <Field label="동" error="">
                           <input required minLength={1} maxLength={20} value={dong} onChange={(e) => setDong(e.target.value)} className={inputClass} placeholder="예: 청라동" />
                         </Field>
-                        <p className="border border-line bg-paper p-3 text-sm leading-6">※ 동일 현장의 다른 홈페이지·분양 채널에 중복으로 등록하신 경우, 상품권 지급이 제한될 수 있습니다.</p>
                         {error ? <p className="text-sm text-error" role="alert">{error}</p> : null}
                         <button type="submit" disabled={pending || !(product && age14 && consent)} className="ak-btn ak-btn--primary ak-btn--block disabled:opacity-60">
                           {pending ? "저장 중" : "등록"}
