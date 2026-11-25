@@ -9,9 +9,8 @@ import { PhoneRegisterPanel } from "@/components/prereg-phone";
 
 export const Route = createFileRoute("/register")({
   // 작업지시서 13: 옛 방문예약 링크(/register?visit=1#visit)는 방문예약 전용 페이지로 보낸다.
-  beforeLoad: ({ location }) => {
-    const search = location.search as Record<string, unknown>;
-    if (search && String(search.visit ?? "") === "1") throw redirect({ to: "/visit", replace: true });
+  beforeLoad: () => {
+    throw redirect({ to: "/visit", replace: true });
   },
   head: () => pageHead(REGISTER_LABEL),
   component: Page,

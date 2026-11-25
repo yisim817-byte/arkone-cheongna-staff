@@ -2,6 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { Shell, SubHero, pageHead } from "@/components/layout";
 import { PROJECT_PHONE_DISPLAY, PROJECT_PHONE_TEL } from "@/data/content";
+import { VISIT_ONLINE } from "@/data/prereg-mode";
 import { loadVisitConfig, VISIT_SLOT_LABEL, type VisitOption } from "@/lib/visit-config";
 
 // 작업지시서 13: 모델하우스 방문예약 전용 페이지. 사전고객등록과 별개로 /api/visit 에 접수한다.
@@ -13,13 +14,35 @@ type Slot = (typeof SLOTS)[number];
 const INTERESTS = ["아파트", "오피스텔", "상가"] as const;
 
 export const Route = createFileRoute("/visit")({
-  head: () => pageHead(TITLE),
+  head: () => pageHead("방문예약"),
   component: Page,
 });
 
 type Done = { receiptNo: string; duplicate: boolean; dateLabel: string; slotLabel: string };
 
+
 function Page() {
+  if (!VISIT_ONLINE) return <PhoneVisit />;
+  return <VisitForm />;
+}
+
+function PhoneVisit() {
+  return (
+    <Shell>
+      <SubHero en="VISIT" title="방문예약" crumbs="방문예약" />
+      <main className="ak-wrap ak-page">
+        <p className="ak-lead">견본주택 방문예약은 전화로만 받습니다.</p>
+        <p>
+          <a className="ak-btn ak-btn--primary visit-phone__cta" href={PROJECT_PHONE_TEL}>전화로 방문예약 {PROJECT_PHONE_DISPLAY}</a>
+        </p>
+        <p>방문예약 후 모델하우스 방문 시 스타벅스 커피 쿠폰 2장</p>
+        <p>인천광역시 서해구 청라동 87-1</p>
+      </main>
+    </Shell>
+  );
+}
+
+function VisitForm() {
   const [cfg, setCfg] = useState<"loading" | "ok" | "off">("loading");
   const [dates, setDates] = useState<VisitOption[]>([]);
   const [name, setName] = useState("");
